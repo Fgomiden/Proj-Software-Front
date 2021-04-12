@@ -12,9 +12,19 @@ const router = new VueRouter({
       component: () => import('@/views/Login.vue')
     },
     {
+      path: '/painel-adm',
+      name: 'painel-adm',
+      component: () => import('@/views/PainelAdmin.vue')
+    },
+    {
       path: '/cadastro-imob',
       name: 'cadastro-imob',
       component: () => import('@/views/CadastroImob.vue')
+    },
+    {
+      path: '/cadastro-imovel',
+      name: 'cadastro-imovel',
+      component: () => import('@/views/CadastroImovel.vue')
     }
   ]
 })

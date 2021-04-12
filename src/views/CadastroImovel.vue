@@ -2,13 +2,13 @@
   <div>
     <v-form v-model="valid">
       <v-container>
-        <h1>Cadastro Imobiliária</h1>
-        <v-row class="pt-4">
+        <h1>Cadastro Imóvel</h1>
+        <v-row class="pt-4"> 
           <v-col cols="12" md="6">
             <v-text-field
               v-model="imobName"
               :rules="nameRules"
-              label="Nome da Imobiliária"
+              label="Nome do proprietário"
               required
               outlined
             ></v-text-field>
@@ -18,7 +18,7 @@
             <v-text-field
               v-model="cnpj"
               :rules="nameRules"
-              label="CNPJ"
+              label="CPF do proprietário"
               required
               outlined
             ></v-text-field>
@@ -30,7 +30,7 @@
             <v-text-field
               v-model="firstname"
               :rules="nameRules"
-              label="Email"
+              label="Nome do Inquilino"
               required
               outlined
             ></v-text-field>
@@ -40,7 +40,19 @@
             <v-text-field
               v-model="lastname"
               :rules="nameRules"
-              label="Telefone"
+              label="CPF do Inquilino"
+              required
+              outlined
+            ></v-text-field>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="12">
+            <v-text-field
+              v-model="lastname"
+              :rules="nameRules"
+              label="Endereço"
               required
               outlined
             ></v-text-field>
@@ -52,7 +64,7 @@
             <v-text-field
               v-model="firstname"
               :rules="nameRules"
-              label="Senha"
+              label="Número"
               required
               outlined
             ></v-text-field>
@@ -62,15 +74,31 @@
             <v-text-field
               v-model="lastname"
               :rules="nameRules"
-              label="Confirmar Senha"
+              label="CEP"
               required
               outlined
             ></v-text-field>
+          </v-col>
+        </v-row>
+
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-text-field
+              v-model="firstname"
+              :rules="nameRules"
+              label="Complemento"
+              required
+              outlined
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="6">
+            <v-select :items="items" label="Tipo do imóvel" outlined></v-select>
           </v-col>
         </v-row>
 
         <v-row justify="center">
-          <v-btn depressed color="primary">Confirmar</v-btn>
+          <v-btn depressed color="primary">Cadastrar</v-btn>
         </v-row>
       </v-container>
     </v-form>
