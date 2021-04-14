@@ -26,7 +26,7 @@
             <v-btn
               block
               color="primary"
-              @click="() => $router.push('/cadastro-imob')"
+              @click="() => $router.push('/painel-adm')"
               >Login</v-btn
             >
           </v-form>
