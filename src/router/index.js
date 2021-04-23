@@ -17,6 +17,11 @@ const router = new VueRouter({
       component: () => import('@/views/PainelAdmin.vue')
     },
     {
+      path: '/painel-cliente',
+      name: 'painel-cliente',
+      component: () => import('@/views/PainelCliente.vue')
+    },
+    {
       path: '/cadastro-imob',
       name: 'cadastro-imob',
       component: () => import('@/views/CadastroImob.vue')
@@ -25,6 +30,16 @@ const router = new VueRouter({
       path: '/cadastro-imovel',
       name: 'cadastro-imovel',
       component: () => import('@/views/CadastroImovel.vue')
+    },
+    {
+      path: '/detalhes-imovel',
+      name: 'detalhes-imovel',
+      component: () => import('@/views/DetalhesImovel.vue')
+    },
+    {
+      path: '/listagem-imoveis',
+      name: 'listagem-imoveis',
+      component: () => import('@/views/ListagemImoveis.vue')
     }
   ]
 })

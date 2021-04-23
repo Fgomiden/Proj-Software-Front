@@ -27,7 +27,12 @@
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="12" md="3" align="center" justify="center">
-        <v-btn text large class="mx-4">
+        <v-btn
+          text
+          large
+          class="mx-4"
+          @click="() => $router.push('/cadastro-imob')"
+        >
           <v-icon left> mdi-domain </v-icon>
           Cadastrar Imobiliária
         </v-btn>
@@ -38,7 +43,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-btn text large v-bind="attrs" v-on="on">
               <v-icon left> mdi-file </v-icon>
-              Solicitacoes de Contratos
+              Contratos
             </v-btn>
           </template>
           <v-list>
@@ -71,7 +76,7 @@
                 <div>Tel: (21)9999-9999</div>
               </v-col>
               <v-row justify="center" class="pt-3">
-                <v-btn text>
+                <v-btn text @click="() => $router.push('/listagem-imoveis')">
                   <v-icon left> mdi-home </v-icon>
                   Imoveis
                 </v-btn>

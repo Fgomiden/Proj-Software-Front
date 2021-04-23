@@ -1,5 +1,5 @@
 <template>
-  <v-app >
+  <v-app>
     <v-main>
       <v-container fluid>
         <router-view></router-view>
@@ -12,6 +12,5 @@
 </template>
 
 <style>
-
 </style>
 
