@@ -23,31 +23,31 @@
       </v-col>
       <v-row>
         <v-col cols="12" sm="3">
-          <div>Endereço</div>
+          <div><strong>Endereço</strong></div>
           <div>Rua Alfredo Ceschiatti, 10</div>
           <br />
-          <div>Bairro</div>
+          <div><strong>Bairro</strong></div>
           <div>Barra da Tijuca</div>
         </v-col>
         <v-col cols="12" sm="3">
-          <div>CEP</div>
+          <div><strong>CEP</strong></div>
           <div>22755-040</div>
           <br />
-          <div>Local</div>
+          <div><strong>Local</strong></div>
           <div>Rio de Janeiro, RJ</div>
         </v-col>
         <v-col cols="12" sm="3">
-          <div>Proprietario</div>
+          <div><strong>Proprietario</strong></div>
           <div>Sofia Almeida</div>
           <br />
-          <div>CPF</div>
+          <div><strong>CPF</strong></div>
           <div>999.999.999-00</div>
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>Inquilino</strong></div>
           <div>Jose Nunes</div>
           <br />
-          <div>CPF</div>
+          <div><strong>CPF</strong></div>
           <div>999.999.999-00</div>
         </v-col>
       </v-row>

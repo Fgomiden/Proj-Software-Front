@@ -6,7 +6,7 @@
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="3" md="3" align="center" justify="center">
-        <v-btn text large class="mx-4">
+        <v-btn text large class="mx-4"  @click="() => $router.push('/cadastro-imovel')">
           <v-icon left> mdi-home-plus </v-icon>
           Cadastrar Imóvel
         </v-btn>

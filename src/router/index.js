@@ -40,6 +40,11 @@ const router = new VueRouter({
       path: '/listagem-imoveis',
       name: 'listagem-imoveis',
       component: () => import('@/views/ListagemImoveis.vue')
+    },
+    {
+      path: '/contratos',
+      name: 'contratos',
+      component: () => import('@/views/Contratos.vue')
     }
   ]
 })

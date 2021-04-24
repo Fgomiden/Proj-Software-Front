@@ -3,7 +3,7 @@
     <v-form v-model="valid">
       <v-container>
         <h1>Cadastro Imóvel</h1>
-        <v-row class="pt-4"> 
+        <v-row class="pt-4">
           <v-col cols="12" md="6">
             <v-text-field
               v-model="imobName"
@@ -93,7 +93,7 @@
           </v-col>
 
           <v-col cols="12" md="6">
-            <v-select :items="items" label="Tipo do imóvel" outlined></v-select>
+            <v-select :items="tipos" label="Tipo do imóvel" outlined></v-select>
           </v-col>
         </v-row>
 
@@ -104,3 +104,11 @@
     </v-form>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    tipos: ["Apartamento", "Casa", "Terreno"],
+  }),
+};
+</script>

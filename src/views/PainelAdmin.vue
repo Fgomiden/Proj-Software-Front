@@ -50,6 +50,11 @@
             <v-list-item v-for="(item, index) in items" :key="index">
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
+            <v-list-item-title>
+              <v-btn text @click="() => $router.push('/contratos')"
+                >Ver mais</v-btn
+              >
+            </v-list-item-title>
           </v-list>
         </v-menu>
       </v-col>
@@ -69,7 +74,29 @@
           <v-card class="pa-2 elevation-2" outlined width="400">
             <v-col>
               <v-row justify="center">
-                <h2>Nome Imobiliaria</h2>
+                <v-col cols="8">
+                  <h2>Nome Imobiliaria</h2>
+                </v-col>
+                <v-col cols="2">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn text>
+                        <v-icon v-bind="attrs" v-on="on"> mdi-pencil </v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Editar</span>
+                  </v-tooltip>
+                </v-col>
+                <v-col cols="2">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn text>
+                        <v-icon v-bind="attrs" v-on="on"> mdi-trash-can </v-icon>
+                      </v-btn>
+                    </template>
+                    <span>Excluir</span>
+                  </v-tooltip>
+                </v-col>
               </v-row>
               <v-col class="pa-3">
                 <div>Email: exemplo@gmail.com</div>
@@ -78,15 +105,7 @@
               <v-row justify="center" class="pt-3">
                 <v-btn text @click="() => $router.push('/listagem-imoveis')">
                   <v-icon left> mdi-home </v-icon>
-                  Imoveis
-                </v-btn>
-                <v-btn text>
-                  <v-icon left> mdi-pencil </v-icon>
-                  Editar
-                </v-btn>
-                <v-btn text>
-                  <v-icon left> mdi-trash-can </v-icon>
-                  Excluir
+                  Imóveis
                 </v-btn>
               </v-row>
             </v-col>
