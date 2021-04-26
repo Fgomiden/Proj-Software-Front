@@ -15,7 +15,7 @@
             <v-row>
               <v-col
                 cols="12"
-                md="7"
+                sm="6"
                 class="d-flex justify-center justify-md-start"
               >
                 <v-icon class="mx-1"> mdi-file-document </v-icon>
@@ -23,14 +23,14 @@
               </v-col>
               <v-col
                 cols="12"
-                md="3"
+                sm="3"
                 class="d-flex justify-center justify-md-start align-center"
               >
                 <div>Enviado: 05/10/22 14:25</div>
               </v-col>
               <v-col
                 cols="12"
-                md="2"
+                sm="3"
                 align-self="center"
                 class="d-flex justify-center justify-md-start"
               >
@@ -78,7 +78,7 @@
             <v-row>
               <v-col
                 cols="12"
-                md="8"
+                sm="6"
                 class="d-flex justify-center justify-md-start"
               >
                 <v-icon class="mx-1"> mdi-file-document </v-icon>
@@ -86,12 +86,12 @@
               </v-col>
               <v-col
                 cols="12"
-                md="2"
+                sm="3"
                 class="d-flex justify-center justify-md-start align-center"
               >
                 <div>Enviado: 05/10/22 14:25</div>
               </v-col>
-              <v-col cols="12" md="2" class="d-flex justify-center">
+              <v-col cols="12" sm="3" class="d-flex justify-center">
                 <v-tooltip top>
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn text>

@@ -6,7 +6,7 @@
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="3" md="3" align="center" justify="center">
-        <v-btn text large class="mx-4">
+        <v-btn text large class="mx-4"  @click="() => $router.push('/cadastro-imovel')">
           <v-icon left> mdi-home-plus </v-icon>
           Cadastrar Imóvel
         </v-btn>
@@ -25,7 +25,7 @@
         ></v-text-field>
       </v-col>
       <v-col cols="2" md="2" justify="center">
-        <v-btn text>
+        <v-btn text @click="() => $router.push('/')">
           <v-icon left> mdi-exit-to-app </v-icon>
           Sair
         </v-btn>
@@ -59,7 +59,7 @@
                   <v-icon left> mdi-menu </v-icon>
                   Detalhes
                 </v-btn>
-                <v-btn text>
+                <v-btn text @click="openModal = Math.random()">
                   <v-icon left> mdi-file-document </v-icon>
                   Solicitar Seguro
                 </v-btn>
@@ -68,15 +68,22 @@
           </v-card>
         </v-col>
       </v-row>
+      <SolicitarSeguro :open="openModal"/>
     </div>
   </div>
 </template>
 
 <script>
 //import ImovelCienteCard from "../components/ImovelClienteCard";
+import SolicitarSeguro from "@/components/SolicitarSeguro";
 
 export default {
+  name: "painel-cliente",
+  components: {
+    SolicitarSeguro,
+  },
   data: () => ({
+    openModal: 0,
     items: [
       { title: "Contrato 1" },
       { title: "Contrato 2" },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <v-dialog v-model="dialog" fullscreen> -->
     <v-form v-model="valid">
       <v-container>
         <h1>Cadastro Imóvel</h1>
@@ -102,13 +102,22 @@
         </v-row>
       </v-container>
     </v-form>
-  </div>
+  <!-- </v-dialog> -->
 </template>
 
 <script>
 export default {
   data: () => ({
+   // dialog: false,
     tipos: ["Apartamento", "Casa", "Terreno"],
   }),
+  // props: {
+  //   open: Number,
+  // },
+  // watch: {
+  //   open() {
+  //     this.dialog = true;
+  //   },
+  // },
 };
 </script>

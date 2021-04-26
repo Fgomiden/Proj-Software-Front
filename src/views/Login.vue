@@ -2,11 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12" md="6">
-        <v-img
-          src="/predio.png"
-          alt="predio"
-          aspect-ratio="1"
-        ></v-img>
+        <v-img src="/predio.png" alt="predio" aspect-ratio="1"></v-img>
       </v-col>
       <v-col cols="12" md="6" class="center">
         <div class="form">
@@ -23,10 +19,12 @@
               name="password"
               type="password"
             ></v-text-field>
+            
+            <v-switch v-model="isAdmin" label="Admin ?"></v-switch>
             <v-btn
               block
               color="primary"
-              @click="() => $router.push('/painel-adm')"
+              @click="() => $router.push( isAdmin ? '/painel-adm' :'/painel-cliente') "
               >Login</v-btn
             >
           </v-form>
@@ -37,9 +35,13 @@
 </template>
 
 <script>
+// import { authenticationService } from '@/_services';
+// import { router, Role } from '@/_helpers';
 export default {
   name: "Login",
-  components: {},
+  data: ()=>({
+    isAdmin: true,
+  })
 };
 </script>
 
