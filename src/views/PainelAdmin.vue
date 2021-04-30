@@ -5,7 +5,8 @@
         <h1 class="text-center">Bem-Vindo, Administrador</h1>
       </v-col>
       <v-col cols="2" md="1">
-        <v-btn text @click="() => $router.push('/')">
+        <!-- @click="() => $router.push('/')" -->
+        <v-btn text @click="logout()">
           <v-icon left> mdi-exit-to-app </v-icon>
           Sair
         </v-btn>
@@ -125,6 +126,12 @@ export default {
       { title: "Contrato 3" },
     ],
   }),
+  methods:{
+    async logout(){
+      await this.$firebase.auth().signOut()
+      this.$router.push({name: 'login'})
+    }
+  }
 };
 </script>
 

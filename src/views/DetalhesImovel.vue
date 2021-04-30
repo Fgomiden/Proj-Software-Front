@@ -56,18 +56,25 @@
     <!--Lista Documentos -->
     <div>
       <v-row>
-        <v-col cols="6" sm="9">
+        <v-col cols="6" sm="6">
           <h1>Documentos</h1>
         </v-col>
         <!-- v-if qnd for admin habilitar Enviar Doc -->
+        <!-- accept=".txt, .pdf, .docx" -->
         <v-col cols="6" sm="3" align-self="center" class="text-center">
-          <v-btn>
-            <v-icon left> mdi-upload </v-icon>
+          <v-file-input prepend-icon="mdi-paperclip" @change="onFileSelected"></v-file-input>
+        <!-- <input type="file" @change="onFileSelected"/> -->
+        </v-col>
+        <v-col cols="6" sm="3" align-self="center" class="text-center">
+          <v-btn text @click="onUpload">
+            <v-icon left>mdi-upload</v-icon>
             Enviar Documentos
           </v-btn>
         </v-col>
       </v-row>
       <v-row align="center" justify="center">
+        <!-- v-for="(file, index) in fileInfos" :key="index" -->
+        <!--  <a :href="file.url">{{ file.name }}</a> -->
         <v-col v-for="n in 6" :key="n" cols="12">
           <v-card class="pa-2 elevation-2" outlined>
             <v-row>
@@ -78,7 +85,7 @@
               <v-col cols="3" md="2">
                 <div>Enviado: 05/10/22 14:25</div>
               </v-col>
-              <v-col cols="3" md="2" >
+              <v-col cols="3" md="2">
                 <v-btn text>
                   <v-icon> mdi-download-outline </v-icon>
                 </v-btn>
@@ -102,7 +109,17 @@ export default {
       { title: "Contrato 2" },
       { title: "Contrato 3" },
     ],
+    seleectedFile: null,
   }),
+  methods:{
+    onFileSelected(e){
+      console.log(e);
+      this.seleectedFile = e;
+    },
+    onUpload(){
+      
+    }
+  }
 };
 </script>
 
