@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-form v-model="valid">
+      <div class="text-red" v-if="error">{{error}}</div>
       <v-container>
         <h1>Cadastro Imobiliária</h1>
         <v-row class="pt-4">
@@ -86,10 +87,14 @@ export default {
     telephone: "",
     password: "",
     password_confirm: "",
+    error:''
   }),
   methods: {
-    async submit() {
-      
+    submit() {
+      // this.$http.plain
+      //   .post("/cadastro", { imobName: this.imobName })
+      //   .then((r) => this.submitOk(r))
+      //   .catch(error => this.submitFail(error));
     },
   },
 };

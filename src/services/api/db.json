@@ -1,0 +1,28 @@
+{
+    "users": [
+        { "id": 1, "type": "admin", "email": "admin@gmail.com", "password": "123" },
+        { "id": 2, 
+          "type": "client", 
+          "imobName":"Castro Imoveis",
+          "cnpj": "99999999", 
+          "email": "cliente@gmail.com", 
+          "telephone": "219999-9999", 
+           "password": "123",
+           "password_confirm":"123" 
+        }
+    ],
+    "properties": [
+        { "id": 1, 
+          "proprietary_name": "Jose Almeida", 
+          "proprietary_cpf": "123.123.123-99", 
+          "occupant_name": "Alexandre Silva",
+          "occupant_cpf": "999.999.999-66",
+          "address": "Rua 10, Pechincha, Jacarepagua, Riode Janeiro-RJ",
+          "property_number": "1065",
+          "cep": "25555-555"
+        }
+    ],
+    "documents": [
+        
+    ]
+}

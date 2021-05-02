@@ -6,7 +6,7 @@
         <v-row class="pt-4">
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="imobName"
+              v-model="proprietary_name"
               :rules="nameRules"
               label="Nome do proprietário"
               required
@@ -16,7 +16,7 @@
 
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="cnpj"
+              v-model="proprietary_cpf"
               :rules="nameRules"
               label="CPF do proprietário"
               required
@@ -28,7 +28,7 @@
         <v-row>
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="firstname"
+              v-model="occupant_name"
               :rules="nameRules"
               label="Nome do Inquilino"
               required
@@ -38,7 +38,7 @@
 
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="lastname"
+              v-model="occupant_cpf"
               :rules="nameRules"
               label="CPF do Inquilino"
               required
@@ -50,7 +50,7 @@
         <v-row>
           <v-col cols="12">
             <v-text-field
-              v-model="lastname"
+              v-model="address"
               :rules="nameRules"
               label="Endereço"
               required
@@ -62,7 +62,7 @@
         <v-row>
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="firstname"
+              v-model="property_number"
               :rules="nameRules"
               label="Número"
               required
@@ -72,7 +72,7 @@
 
           <v-col cols="12" md="6">
             <v-text-field
-              v-model="lastname"
+              v-model="cep"
               :rules="nameRules"
               label="CEP"
               required
