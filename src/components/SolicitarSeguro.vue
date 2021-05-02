@@ -15,7 +15,7 @@
               Incêndio
             </v-row>
             <v-row justify="center" align="center">
-              <v-checkbox v-model="wind"></v-checkbox>
+              <v-checkbox v-model="storm"></v-checkbox>
               Vendaval
             </v-row>
           </v-col>
@@ -25,7 +25,7 @@
               Explosão
             </v-row>
             <v-row justify="center" align="center">
-              <v-checkbox v-model="eletric"></v-checkbox>
+              <v-checkbox v-model="electricity"></v-checkbox>
               Elétrico
             </v-row>
           </v-col>
@@ -49,8 +49,9 @@ export default {
       dialog: false,
       fire: false,
       explosion: false,
-      wind: false,
-      eletric: false,
+      storm: false,
+      electricity: false,
+      contract_value: 0,
     };
   },
   props: {

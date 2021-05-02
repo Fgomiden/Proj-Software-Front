@@ -18,37 +18,37 @@
       </v-col>
     </v-row>
     <v-col>
-      <v-col class="text-center">
+      <!-- <v-col class="text-center">
         <span> <strong>Cond. Rio 2, B1, Apt 305</strong> </span>
-      </v-col>
+      </v-col> -->
       <v-row>
         <v-col cols="12" sm="3">
           <div><strong>Endereço</strong></div>
-          <div>Rua Alfredo Ceschiatti, 10</div>
+          <div>{{$route.params.street_name}}</div>
           <br />
-          <div><strong>Bairro</strong></div>
-          <div>Barra da Tijuca</div>
+          <div><strong>Numero</strong></div>
+          <div>{{$route.params.estate_number}}</div>
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>CEP</strong></div>
-          <div>22755-040</div>
-          <br />
+          <div>{{$route.params.cep}}</div>
+          <!-- <br />
           <div><strong>Local</strong></div>
-          <div>Rio de Janeiro, RJ</div>
+          <div>Rio de Janeiro, RJ</div> -->
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>Proprietario</strong></div>
-          <div>Sofia Almeida</div>
+          <div>{{$route.params.owner_name}}</div>
           <br />
           <div><strong>CPF</strong></div>
-          <div>999.999.999-00</div>
+          <div>{{$route.params.owner_cpf}}</div>
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>Inquilino</strong></div>
-          <div>Jose Nunes</div>
+          <div>{{$route.params.tenant_name}}</div>
           <br />
           <div><strong>CPF</strong></div>
-          <div>999.999.999-00</div>
+          <div>{{$route.params.tenant_cpf}}</div>
         </v-col>
       </v-row>
     </v-col>
@@ -102,8 +102,10 @@
 </template>
 
 <script>
-export default {
+//import { getEstates} from "../services/api";
+export default {  
   data: () => ({
+    imoveis:[],
     items: [
       { title: "Contrato 1" },
       { title: "Contrato 2" },
@@ -111,14 +113,16 @@ export default {
     ],
     seleectedFile: null,
   }),
+  
   methods:{
-    onFileSelected(e){
-      console.log(e);
-      this.seleectedFile = e;
-    },
-    onUpload(){
+    
+    // onFileSelected(e){
+    //   console.log(e);
+    //   this.seleectedFile = e;
+    // },
+    // onUpload(){
       
-    }
+    // }
   }
 };
 </script>

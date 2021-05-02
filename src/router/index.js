@@ -6,11 +6,11 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
-    {
-      path: '/',
-      name: 'login',
-      component: () => import('@/views/Login.vue')
-    },
+     {
+       path: '/',
+       name: 'login',
+       component: () => import('@/views/Login.vue')
+     },
     {
       path: '/painel-adm',
       name: 'painel-adm',
@@ -32,13 +32,15 @@ const router = new VueRouter({
       component: () => import('@/views/CadastroImovel.vue')
     },
     {
-      path: '/detalhes-imovel',
+      path: '/detalhes-imovel/:id',
       name: 'detalhes-imovel',
+      props: true,
       component: () => import('@/views/DetalhesImovel.vue')
     },
     {
       path: '/listagem-imoveis',
       name: 'listagem-imoveis',
+      props: true,
       component: () => import('@/views/ListagemImoveis.vue')
     },
     {
@@ -49,11 +51,11 @@ const router = new VueRouter({
   ]
 })
 
-router.beforeEach((to, from, next)=>{
-  if (!window.uid && to.name !== 'login') {
-    next({name:'login'})
-  } else next()
-})
+// router.beforeEach((to, from, next)=>{
+//   if (!window.uid && to.name !== 'login') {
+//     next({name:'login'})
+//   } else next()
+// })
 
 export default router
 

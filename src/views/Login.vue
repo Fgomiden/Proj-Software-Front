@@ -21,18 +21,20 @@
               id="password"
               label="Senha"
               name="password"
-              type="password"
+              type="e-mail"
               v-model="password"
               @keyup.enter="doLogin"
             ></v-text-field>
 
-            <!-- <v-switch v-model="isAdmin" label="Admin ?"></v-switch> -->
+            <v-switch v-model="isAdmin" label="Admin ?"></v-switch>
             <!-- () => $router.push(isAdmin ? '/painel-adm' : '/painel-cliente') -->
+            <!-- @click="doLogin" -->
+
+              <!-- :disabled="!email || !password" -->
             <v-btn
               color="primary"
               block
-              :disabled="!email || !password"
-              @click="doLogin"
+              @click="() => $router.push(isAdmin ? '/painel-adm': '/painel-cliente')"
               >Login</v-btn
             >
           </v-form>

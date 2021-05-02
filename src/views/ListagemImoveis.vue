@@ -6,7 +6,12 @@
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="3" md="3" align="center" justify="center">
-        <v-btn text large class="mx-4"  @click="() => $router.push('/cadastro-imovel')">
+        <v-btn
+          text
+          large
+          class="mx-4"
+          @click="() => $router.push('/cadastro-imovel')"
+        >
           <v-icon left> mdi-home-plus </v-icon>
           Cadastrar Imóvel
         </v-btn>
@@ -36,20 +41,44 @@
     <!-- Tem Imovel Cadatrado -->
     <div>
       <v-row align="center" justify="center">
-        <v-col v-for="n in 6" :key="n" cols="12" sm="6" md="4">
+        <v-col
+          v-for="imovel in imoveis"
+          :key="imovel.id"
+          cols="12"
+          sm="6"
+          md="4"
+        >
           <v-card class="pa-2 elevation-2" outlined width="430">
             <v-col>
               <v-row justify="center">
-                <h2>Nome Imovel</h2>
+                <h2>{{ imovel.street_name }}</h2>
               </v-row>
               <v-col class="pa-3">
-                <div>Proprietario: Fulano</div>
+                <div>Proprietario: {{ imovel.owner_name }}</div>
               </v-col>
               <v-col class="pa-3">
-                <div>Inquilino: Siclano</div>
+                <div>Inquilino: {{ imovel.tenant_name }}</div>
               </v-col>
               <v-row justify="center" class="pt-3">
-                <v-btn text @click="() => $router.push('/detalhes-imovel')">
+                <v-btn
+                  text
+                  @click="
+                    () =>
+                      $router.push({
+                        name: 'detalhes-imovel',
+                        params: {
+                          id: imovel.id,
+                          street_name: imovel.street_name,
+                          estate_number: imovel.estate_number,
+                          cep: imovel.cep,
+                          owner_name: imovel.owner_name,
+                          owner_cpf: imovel.owner_cpf,
+                          tenant_name: imovel.tenant_name,
+                          tenant_cpf: imovel.tenant_cpf,
+                        },
+                      })
+                  "
+                >
                   <v-icon left> mdi-menu </v-icon>
                   Detalhes
                 </v-btn>
@@ -58,7 +87,6 @@
           </v-card>
         </v-col>
       </v-row>
-      
     </div>
   </div>
 </template>
@@ -66,14 +94,25 @@
 <script>
 //import ImovelCienteCard from "../components/ImovelClienteCard";
 
+import { getEstates } from "../services/api";
 export default {
   data: () => ({
+    imoveis: [],
     items: [
       { title: "Contrato 1" },
       { title: "Contrato 2" },
       { title: "Contrato 3" },
     ],
   }),
+  async created() {
+    try {
+      let imoveis = await getEstates();
+      this.imoveis = imoveis;
+      console.log("imoveis", this.imoveis);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 </script>
 
