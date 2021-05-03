@@ -1,116 +1,139 @@
 <template>
   <!-- <v-dialog v-model="dialog" fullscreen> -->
-    <v-form v-model="valid">
-      <v-container>
-        <h1>Cadastro Imóvel</h1>
-        <v-row class="pt-4">
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="proprietary_name"
-              :rules="nameRules"
-              label="Nome do proprietário"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
+  <v-form v-model="valid">
+    <v-container>
+      <h1>Cadastro Imóvel</h1>
+      <v-row class="pt-4">
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="owner_name"
+            :rules="nameRules"
+            label="Nome do proprietário"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="proprietary_cpf"
-              :rules="nameRules"
-              label="CPF do proprietário"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
-        </v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="owner_cpf"
+            label="CPF do proprietário"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="occupant_name"
-              :rules="nameRules"
-              label="Nome do Inquilino"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="tenant_name"
+            label="Nome do Inquilino"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="occupant_cpf"
-              :rules="nameRules"
-              label="CPF do Inquilino"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
-        </v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="tenant_cpf"
+            label="CPF do Inquilino"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-        <v-row>
-          <v-col cols="12">
-            <v-text-field
-              v-model="address"
-              :rules="nameRules"
-              label="Endereço"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
-        </v-row>
+      <v-row>
+        <v-col cols="12">
+          <v-text-field
+            v-model="street_name"
+            label="Endereço"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="property_number"
-              :rules="nameRules"
-              label="Número"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="estate_number"
+            label="Número"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
 
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="cep"
-              :rules="nameRules"
-              label="CEP"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
-        </v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            v-model="cep"
+            label="CEP"
+            required
+            outlined
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-text-field
-              v-model="firstname"
-              :rules="nameRules"
-              label="Complemento"
-              required
-              outlined
-            ></v-text-field>
-          </v-col>
+      <v-row>
+        <!-- <v-col cols="12" md="6">
+          <v-text-field
+            v-model="firstname"
+            label="Complemento"
+            required
+            outlined
+          ></v-text-field>
+        </v-col> -->
 
-          <v-col cols="12" md="6">
-            <v-select :items="tipos" label="Tipo do imóvel" outlined></v-select>
-          </v-col>
-        </v-row>
+        <v-col cols="12" md="6">
+          <v-select
+            :items="tipos"
+            v-model="estate_type"
+            label="Tipo do imóvel"
+            outlined
+          ></v-select>
+        </v-col>
+      </v-row>
 
-        <v-row justify="center">
-          <v-btn depressed color="primary">Cadastrar</v-btn>
-        </v-row>
-      </v-container>
-    </v-form>
+      <v-row justify="center">
+        <v-btn depressed color="primary" @click="saveEstates">Cadastrar</v-btn>
+      </v-row>
+    </v-container>
+  </v-form>
   <!-- </v-dialog> -->
 </template>
 
 <script>
+import { submitEstates } from "../services/api";
 export default {
   data: () => ({
-   // dialog: false,
+    owner_name: "",
+    owner_cpf: "",
+    tenant_name: "",
+    tenant_cpf: "",
+    street_name: "",
+    estate_number: "",
+    cep: "",
+    estate_type: "",
+    // dialog: false,
     tipos: ["Apartamento", "Casa", "Terreno"],
   }),
+  methods: {
+    async saveEstates() {
+      const imoveis = {
+        owner_name: this.owner_name,
+        owner_cpf: this.owner_cpf,
+        tenant_name: this.tenant_name,
+        tenant_cpf: this.tenant_cpf,
+        street_name: this.street_name,
+        estate_number: this.estate_number,
+        cep: this.cep,
+        estate_type: this.estate_type,
+      };
+      console.log(imoveis);
+      await submitEstates(imoveis);
+    },
+  },
   // props: {
   //   open: Number,
   // },
