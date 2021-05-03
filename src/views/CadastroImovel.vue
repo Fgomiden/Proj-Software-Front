@@ -119,6 +119,14 @@ export default {
     tipos: ["Apartamento", "Casa", "Terreno"],
   }),
   methods: {
+    /**
+     * Add validacao
+     * Owner name is too short (minimum is 6 characters), 
+     * Owner cpf is too short (minimum is 11 characters), 
+     * Tenant cpf is too short (minimum is 11 characters), 
+     * Client can't be blank, 
+     * Client is too short (minimum is 1 character))
+     */
     async saveEstates() {
       const imoveis = {
         owner_name: this.owner_name,
@@ -129,6 +137,7 @@ export default {
         estate_number: this.estate_number,
         cep: this.cep,
         estate_type: this.estate_type,
+        client_id:1, //Implementar o id do cliente qnd der o get
       };
       console.log(imoveis);
       await submitEstates(imoveis);

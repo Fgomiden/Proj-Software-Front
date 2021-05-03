@@ -24,31 +24,31 @@
       <v-row>
         <v-col cols="12" sm="3">
           <div><strong>Endereço</strong></div>
-          <div>{{$route.params.street_name}}</div>
+          <div>{{imovel.street_name}}</div>
           <br />
           <div><strong>Numero</strong></div>
-          <div>{{$route.params.estate_number}}</div>
+          <div>{{imovel.estate_number}}</div>
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>CEP</strong></div>
-          <div>{{$route.params.cep}}</div>
+          <div>{{imovel.cep}}</div>
           <!-- <br />
           <div><strong>Local</strong></div>
           <div>Rio de Janeiro, RJ</div> -->
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>Proprietario</strong></div>
-          <div>{{$route.params.owner_name}}</div>
+          <div>{{imovel.owner_name}}</div>
           <br />
           <div><strong>CPF</strong></div>
-          <div>{{$route.params.owner_cpf}}</div>
+          <div>{{imovel.owner_cpf}}</div>
         </v-col>
         <v-col cols="12" sm="3">
           <div><strong>Inquilino</strong></div>
-          <div>{{$route.params.tenant_name}}</div>
+          <div>{{imovel.tenant_name}}</div>
           <br />
           <div><strong>CPF</strong></div>
-          <div>{{$route.params.tenant_cpf}}</div>
+          <div>{{imovel.tenant_cpf}}</div>
         </v-col>
       </v-row>
     </v-col>
@@ -110,10 +110,14 @@ export default {
       { title: "Contrato 1" },
       { title: "Contrato 2" },
       { title: "Contrato 3" },
-    ],
-    seleectedFile: null,
+    ],    
+    //selectedFile: null,
   }),
-  
+  computed:{
+    imovel(){
+      return this.$route.params.imovel
+    }
+  },
   methods:{
     
     // onFileSelected(e){

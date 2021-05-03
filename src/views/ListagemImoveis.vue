@@ -66,16 +66,7 @@
                     () =>
                       $router.push({
                         name: 'detalhes-imovel',
-                        params: {
-                          id: imovel.id,
-                          street_name: imovel.street_name,
-                          estate_number: imovel.estate_number,
-                          cep: imovel.cep,
-                          owner_name: imovel.owner_name,
-                          owner_cpf: imovel.owner_cpf,
-                          tenant_name: imovel.tenant_name,
-                          tenant_cpf: imovel.tenant_cpf,
-                        },
+                        params: { imovel },
                       })
                   "
                 >
