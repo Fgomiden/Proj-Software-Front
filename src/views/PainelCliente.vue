@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="3" md="4">
-        <h1 class="text-center">Bem-Vindo, Castro Imoveis</h1>
+        <h1 class="text-center">Bem-Vindo, {{cliente.name}}</h1>
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="3" md="3" align="center" justify="center">
@@ -74,22 +74,25 @@
 </template>
 
 <script>
-//import ImovelCienteCard from "../components/ImovelClienteCard";
+//import { getClients } from "../services/api";
 import SolicitarSeguro from "@/components/SolicitarSeguro";
-
 export default {
   name: "painel-cliente",
   components: {
     SolicitarSeguro,
   },
   data: () => ({
-    openModal: 0,
-    items: [
-      { title: "Contrato 1" },
-      { title: "Contrato 2" },
-      { title: "Contrato 3" },
-    ],
+    openModal: 0,    
   }),
+  // async created() {
+  //   try {
+  //     let clientes = await getClients();
+  //     this.clientes = clientes;
+  //     console.log("clientes", this.clientes);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="3" md="4">
-        <h1 class="text-center">Castro Imoveis</h1>
+        <h1 class="text-center">{{ cliente.name }}</h1>
       </v-col>
       <!-- Cadastrar Imob Button-->
       <v-col cols="3" md="3" align="center" justify="center">
@@ -10,7 +10,9 @@
           text
           large
           class="mx-4"
-          @click="() => $router.push('/cadastro-imovel')"
+          @click="
+            () => $router.push({ name: 'cadastro-imovel', params: { cliente:{name:cliente.name,id:cliente.id} } })
+          "
         >
           <v-icon left> mdi-home-plus </v-icon>
           Cadastrar Imóvel
@@ -32,11 +34,18 @@
     </v-row>
 
     <!-- Nao tem Imovel Cadatrado -->
-    <!-- <div style="height:50vh;" class="d-flex justify-center align-center">
+    <div
+      style="height: 50vh"
+      class="d-flex justify-center align-center"
+      v-if="imoveis.length == 0"
+    >
       <div class="d-flex text-center">
-        <h1>Não há Imóveis cadastrados. <br> Aperte no ícone para cadastrar um imóvel</h1> 
+        <h1>
+          Não há Imóveis cadastrados. <br />
+          Aperte no ícone para cadastrar um imóvel
+        </h1>
       </div>
-    </div> -->
+    </div>
 
     <!-- Tem Imovel Cadatrado -->
     <div>
@@ -48,11 +57,11 @@
           sm="6"
           md="4"
         >
-          <v-card class="pa-2 elevation-2" outlined width="430">
+          <v-card class="pa-2 elevation-2" outlined max-width="430" max-height="430" >
             <v-col>
-              <v-row justify="center">
-                <h2>{{ imovel.street_name }}</h2>
-              </v-row>
+              <v-col class="pa-3">
+                <div>Imóvel: {{ imovel.street_name }}</div>
+              </v-col>
               <v-col class="pa-3">
                 <div>Proprietario: {{ imovel.owner_name }}</div>
               </v-col>
@@ -83,17 +92,11 @@
 </template>
 
 <script>
-//import ImovelCienteCard from "../components/ImovelClienteCard";
-
 import { getEstates } from "../services/api";
 export default {
   data: () => ({
     imoveis: [],
-    items: [
-      { title: "Contrato 1" },
-      { title: "Contrato 2" },
-      { title: "Contrato 3" },
-    ],
+    // cliente:{},
   }),
   async created() {
     try {
@@ -103,6 +106,12 @@ export default {
     } catch (error) {
       console.log(error);
     }
+  },
+  computed: {
+    cliente() {
+      console.log('params do cliente nos imoveis', this.$route.params.cliente)
+      return this.$route.params.cliente;
+    },
   },
 };
 </script>

@@ -106,11 +106,7 @@
 export default {  
   data: () => ({
     imoveis:[],
-    items: [
-      { title: "Contrato 1" },
-      { title: "Contrato 2" },
-      { title: "Contrato 3" },
-    ],    
+       
     //selectedFile: null,
   }),
   computed:{

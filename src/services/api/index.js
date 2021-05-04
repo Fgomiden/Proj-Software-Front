@@ -13,7 +13,7 @@ export const api = axios.create({
 //Imobiliarias
 export const getClients = async () => {
     const response = await api.get("/clients/");
-    return response.data.estates;
+    return response.data.clients;
 };
 
 export const submitClients = async (imobiliaria) => {    
