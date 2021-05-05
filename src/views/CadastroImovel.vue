@@ -1,8 +1,9 @@
 <template>
-  <!-- <v-dialog v-model="dialog" fullscreen> -->
   <v-form v-model="valid">
     <v-container>
-      <h1>Cadastro do Imóvel</h1>
+      <v-row>
+        <h1 class="px-2">Cadastro do Imóvel</h1>
+      </v-row>
       <v-row class="pt-4">
         <v-col cols="12" md="6">
           <v-text-field
@@ -56,7 +57,6 @@
       </v-row>
 
       <v-row>
-        <!-- Unpermitted parameter: :complement -->
         <v-col cols="12" md="8">
           <v-text-field
             v-model="complement"
@@ -111,7 +111,6 @@
       </v-row>
     </v-container>
   </v-form>
-  <!-- </v-dialog> -->
 </template>
 
 <script>
@@ -128,10 +127,9 @@ export default {
     estate_type: "",
     complement: "",
     rent_price: 0,
-    // dialog: false,
     tipos: ["Apartamento", "Casa", "Terreno"],
   }),
-  methods: {   
+  methods: {
     async saveEstates() {
       const imoveis = {
         owner_name: this.owner_name,
@@ -147,24 +145,18 @@ export default {
         client_id: this.cliente.id,
       };
       console.log(imoveis);
-      await submitEstates(imoveis)
-        // .then(() => alert("Imóvel cadastrado com sucesso"))
-        // .catch((e) => alert("Erro:", e));
+
+      await submitEstates(imoveis);
+    },
+    alerta() {
+      alert("Imovel cadastrado com sucesso");
     },
   },
   computed: {
     cliente() {
-      console.log("params do cliente", this.$route.params.cliente )
+      console.log("params do cliente", this.$route.params.cliente);
       return this.$route.params.cliente;
     },
   },
-  // props: {
-  //   open: Number,
-  // },
-  // watch: {
-  //   open() {
-  //     this.dialog = true;
-  //   },
-  // },
 };
 </script>

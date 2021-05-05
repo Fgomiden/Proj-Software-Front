@@ -5,8 +5,7 @@
         <h1 class="text-center">Bem-Vindo, Administrador</h1>
       </v-col>
       <v-col cols="2" md="1">
-        <!-- @click="() => $router.push('/')" -->
-        <v-btn text @click="logout()">
+        <v-btn text  @click="() => $router.push('/')">
           <v-icon left> mdi-exit-to-app </v-icon>
           Sair
         </v-btn>
@@ -90,7 +89,7 @@
                 <v-col cols="2">
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                      <v-btn text @click="deleteImovel">
+                      <v-btn text @click="deleteCliente(cliente.id)">
                         <v-icon v-bind="attrs" v-on="on">
                           mdi-trash-can
                         </v-icon>
@@ -129,7 +128,7 @@
 </template>
 
 <script>
-import { getClients } from "../services/api";
+import { getClients, deleteClient } from "../services/api";
 export default {
   data: () => ({
     clientes: [],
@@ -143,7 +142,20 @@ export default {
       console.log(error);
     }
   },
-  
+  methods: {
+    async deleteCliente(selectedId) {
+      let check = confirm("Deseja excluir essa imobiliária ?");
+      if (check == true) {
+        try {
+          let message = await deleteClient(selectedId);
+          this.clientes = this.clientes.filter((o)=>o.id != selectedId);
+          return message;
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    },
+  },
 };
 </script>
 

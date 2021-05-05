@@ -53,7 +53,7 @@
               required
               outlined
             ></v-text-field>
-          </v-col>          
+          </v-col>
         </v-row>
 
         <v-row justify="center">
@@ -76,7 +76,6 @@ export default {
     email: "",
     phone: "",
     password: "",
-    //confirm_password:"",
     error: "",
   }),
   methods: {

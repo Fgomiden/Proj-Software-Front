@@ -9,18 +9,6 @@ export const api = axios.create({
   },
 });
 
-export const api2 = axios.create({
-  baseURL: "http://localhost:5000",
-  headers: {
-    "Content-type": "application/json",
-  },
-});
-
-//usuarios
-export const getUsers = async () => {
-  const response = await api.get("/users/");
-  return response.data.users;
-};
 
 //Imobiliarias
 export const getClients = async () => {
@@ -35,6 +23,12 @@ export const submitClients = async (imobiliaria) => {
     .catch((error) => {
       console.error("Erro!", error);
     });
+  return message;
+};
+
+export const deleteClient = async (id) => {
+  const { message } = await api.delete(`/clients/${id}`);
+  console.log(message);
   return message;
 };
 
@@ -54,19 +48,29 @@ export const submitEstates = async (imoveis) => {
   return message;
 };
 
+export const deleteEstate = async (id) => {
+  const { message } = await api.delete(`/estates/${id}`);
+  console.log("Estates", message);
+  return message;
+};
+
+
 //Contratos
 export const getContracts = async () => {
   const response = await api.get("/contracts/");
   return response.data.contracts;
 };
 
+export const deleteContracts = async (id) => {
+  const { message } = await api.delete(`/contracts/${id}`);
+  console.log("Contracts", message);
+  return message;
+}
+
 export const submitContracts = async (contrato) => {
   const { message } = await api
     .post("/contracts", contrato)
-    .then((response) => console.log("Resposta", response))
-    // .catch((error) => {
-    //   console.error("Erro!", error);
-    // });
+    .then((response) => console.log("Resposta", response))    
   return message;
 };
 

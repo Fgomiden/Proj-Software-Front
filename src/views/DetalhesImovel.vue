@@ -13,7 +13,7 @@
           solo
           hide-details
           prepend-inner-icon="mdi-magnify"
-          label="Buscar Imobiliárias"
+          label="Buscar Documentos"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -53,14 +53,11 @@
         <v-col cols="6" sm="6">
           <h1>Documentos</h1>
         </v-col>
-        <!-- v-if qnd for admin habilitar Enviar Doc -->
-        <!-- accept=".txt, .pdf, .docx" -->
         <v-col cols="6" sm="3" align-self="center" class="text-center">
           <v-file-input
             prepend-icon="mdi-paperclip"
             @change="onFileSelected"
           ></v-file-input>
-          <!-- <input type="file" @change="onFileSelected"/> -->
         </v-col>
         <v-col cols="6" sm="3" align-self="center" class="text-center">
           <v-btn text @click="onUpload">
@@ -70,8 +67,6 @@
         </v-col>
       </v-row>
       <v-row align="center" justify="center">
-        <!-- v-for="(file, index) in fileInfos" :key="index" -->
-        <!--  <a :href="file.url">{{ file.name }}</a> -->
         <v-col v-for="n in 3" :key="n" cols="12">
           <v-card class="pa-2 elevation-2" outlined>
             <v-row>
@@ -99,7 +94,6 @@
 </template>
 
 <script>
-//import { getEstates} from "../services/api";
 export default {
   data: () => ({
     imoveis: [],

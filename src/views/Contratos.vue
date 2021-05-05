@@ -18,9 +18,9 @@
           >
             <v-row>
               <v-col cols="12" sm="4">
+                <div>Proprietário: {{ openEstate.owner_name }}</div>
                 <div>
-                  Proprietário: {{ openEstate.owner_name }} CPF:
-                  {{ openEstate.owner_cpf }}
+                  CPF: {{ openEstate.owner_cpf }}
                 </div>
                 <div>
                   Inquilino: {{ openEstate.tenant_name }} CPF:{{
@@ -29,7 +29,7 @@
                 </div>
               </v-col>
               <v-col cols="12" sm="4">
-                <div>Aluguel: R$ {{ openEstate.rent_price }}</div>
+                <div>Aluguel: R$ {{ openEstate.rent_price.toFixed(2) }}</div>
               </v-col>
               <v-col cols="12" sm="4">
                 <div>End.: {{ openEstate.street_name }}</div>
@@ -46,13 +46,19 @@
           >
             <v-row>
               <v-col cols="12" sm="3">
-                <div>Valor: R$ {{ openContract.contract_value }}</div>
+                <div>
+                  Valor: R$ {{ openContract.contract_value.toFixed(2) }}
+                </div>
               </v-col>
               <v-col cols="12" sm="3">
-                <div>Eletricidade: {{ openContract.electricity }}</div>
-                <div>Vendaval: {{ openContract.storm }}</div>
-                <div>Explosão: {{ openContract.explosion }}</div>
-                <div>Fogo: {{ openContract.fire }}</div>
+                <div>
+                  Eletricidade: {{ openContract.electricity ? "Sim" : "Não" }}
+                </div>
+                <div>Vendaval: {{ openContract.storm ? "Sim" : "Não" }}</div>
+                <div>
+                  Explosão: {{ openContract.explosion ? "Sim" : "Não" }}
+                </div>
+                <div>Fogo: {{ openContract.fire ? "Sim" : "Não" }}</div>
               </v-col>
               <v-col cols="12" sm="3">
                 <div>Enviado: {{ convertTime(openContract.created_at) }}</div>

@@ -4,9 +4,9 @@
       <v-col cols="6">
         <v-img src="/predio.png" alt="predio" aspect-ratio="1"></v-img>
       </v-col>
-      <v-col cols="6" class="center"> 
+      <v-col cols="6" class="center">
         <div class="form">
-        <h3 class="text-center">Sistema Seguradora</h3>       
+          <h3 class="text-center">Sistema Seguradora</h3>
           <v-form class="py-5">
             <v-text-field
               required
@@ -14,7 +14,6 @@
               name="login"
               type="text"
               v-model="email"
-              @keyup.enter="doLogin"
             ></v-text-field>
 
             <v-text-field
@@ -24,18 +23,20 @@
               name="password"
               type="password"
               v-model="password"
-              @keyup.enter="doLogin"
             ></v-text-field>
 
             <v-switch v-model="isAdmin" label="Admin"></v-switch>
-            <!-- () => $router.push(isAdmin ? '/painel-adm' : '/painel-cliente') -->
-            <!-- @click="doLogin" -->
 
-              <!-- :disabled="!email || !password" -->
             <v-btn
               color="primary"
               block
-              @click="() => $router.push(isAdmin ? '/painel-adm': '/painel-cliente')"
+              @click="
+                () =>
+                  $router.push({
+                    name: isAdmin ? 'painel-adm' : 'painel-cliente',
+                    params: { clientLogin },
+                  })
+              "
               >Login</v-btn
             >
           </v-form>
@@ -46,43 +47,31 @@
 </template>
 
 <script>
-import { getUsers } from "../services/api";
+import { getClients } from "../services/api";
 
 export default {
   name: "Login",
   data: () => ({
-    // users:[],
+    clientLogin: [],
     isAdmin: true,
     email: "",
     password: "",
   }),
   async created() {
     try {
-      let users = await getUsers();
-      this.users = users;
-      console.log("users", this.users);
+      let clientLogin = await getClients();
+      this.clientLogin = clientLogin;
+      console.log("clientLogin", this.clientLogin);
     } catch (error) {
       console.log(error);
     }
   },
-  methods: {
-    async doLogin() {     
-      
-      // if (this.users) {
-      //   if (this.users.type == "admin") {
-      //     this.$router.push('/painel-adm');
-      //   } else {
-      //     this.$router.push('/painel-cliente');
-      //   }
-      // }
-       
-      // admin@gmail.com
-      // admin123
-      // cliente@gmail.com
-      // cliente123
-     
+
+  computed: {
+    cliente() {
+      console.log("params do login no cliente", this.$route.params.cliente);
+      return this.$route.params.cliente;
     },
-    
   },
 };
 </script>
