@@ -131,15 +131,7 @@ export default {
     // dialog: false,
     tipos: ["Apartamento", "Casa", "Terreno"],
   }),
-  methods: {
-    /**
-     * Add validacao
-     * Owner name is too short (minimum is 6 characters),
-     * Owner cpf is too short (minimum is 11 characters),
-     * Tenant cpf is too short (minimum is 11 characters),
-     * Client can't be blank,
-     * Client is too short (minimum is 1 character))
-     */
+  methods: {   
     async saveEstates() {
       const imoveis = {
         owner_name: this.owner_name,

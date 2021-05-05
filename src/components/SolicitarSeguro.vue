@@ -28,21 +28,18 @@
               <v-checkbox v-model="electricity"></v-checkbox>
               Elétrico
             </v-row>
-          </v-col>
-          <div>
-            <strong>Valor: </strong>
-            <span>100</span>
-          </div>
+          </v-col>         
         </v-row>
       </v-container>
       <v-card-actions class="d-flex justify-center">
-        <v-btn text @click="dialog = false"> Enviar </v-btn>
+        <v-btn text @click="submitContratos, dialog = false"> Enviar </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import { submitContracts } from "../services/api";
 export default {
   data() {
     return {
@@ -51,11 +48,26 @@ export default {
       explosion: false,
       storm: false,
       electricity: false,
-      contract_value: 0,
+      imoveis: this.imoveis,
     };
   },
   props: {
     open: Number,
+  },
+  methods:{
+     async submitContratos() {
+      const contrato = {
+        fire: this.fire,
+        explosion: this.explosion,
+        storm: this.storm,
+        electricity: this.electricity,
+        estate_id: this.imoveis.id,
+      };
+      console.log(contrato);
+      await submitContracts(contrato)
+        // .then(() => alert(" com sucesso"))
+        // .catch((e) => alert("Erro:", e));
+    },
   },
   watch: {
     open() {

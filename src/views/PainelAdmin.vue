@@ -40,38 +40,37 @@
       </v-col>
       <!-- Solicitacao de COntratos Button-->
       <v-col cols="12" md="3" align="center" justify="center">
-        <v-menu offset-y close-on-click="false">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn text large v-bind="attrs" v-on="on">
-              <v-icon left> mdi-file </v-icon>
-              Contratos
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item v-for="(item, index) in items" :key="index">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item-title>
-              <v-btn text @click="() => $router.push('/contratos')"
-                >Ver mais</v-btn
-              >
-            </v-list-item-title>
-          </v-list>
-        </v-menu>
+        <v-btn text large @click="() => $router.push('/contratos')">
+          <v-icon left> mdi-file </v-icon>
+          Contratos
+        </v-btn>
       </v-col>
     </v-row>
 
     <!-- Nao tem Imobiliaria Cadatrados -->
-    <div style="height:50vh;" class="d-flex justify-center align-center" v-if="clientes.length == 0">
+    <div
+      style="height: 50vh"
+      class="d-flex justify-center align-center"
+      v-if="clientes.length == 0"
+    >
       <div class="d-flex text-center">
-        <h1>Não há Imobiliárias cadastradas. <br> Aperte no botão acima para cadastrar um imobiliária</h1> 
+        <h1>
+          Não há Imobiliárias cadastradas. <br />
+          Aperte no botão acima para cadastrar um imobiliária
+        </h1>
       </div>
     </div>
 
     <!-- Tem Imobiliaria Cadatrada -->
     <div>
       <v-row align="center" justify="center">
-        <v-col v-for="cliente in clientes" :key="cliente.id" cols="12" sm="6" md="4">
+        <v-col
+          v-for="cliente in clientes"
+          :key="cliente.id"
+          cols="12"
+          sm="6"
+          md="4"
+        >
           <v-card class="pa-2 elevation-2" outlined width="400">
             <v-col>
               <v-row justify="center">
@@ -91,7 +90,7 @@
                 <v-col cols="2">
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
-                      <v-btn text>
+                      <v-btn text @click="deleteImovel">
                         <v-icon v-bind="attrs" v-on="on">
                           mdi-trash-can
                         </v-icon>
@@ -144,12 +143,7 @@ export default {
       console.log(error);
     }
   },
-  methods: {
-    async logout() {
-      await this.$firebase.auth().signOut();
-      this.$router.push({ name: "login" });
-    },
-  },
+  
 };
 </script>
 

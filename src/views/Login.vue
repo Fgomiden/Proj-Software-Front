@@ -1,11 +1,12 @@
 <template>
   <div>
     <v-row>
-      <!-- <v-col cols="6">
+      <v-col cols="6">
         <v-img src="/predio.png" alt="predio" aspect-ratio="1"></v-img>
-      </v-col> -->
-      <v-col class="center">
+      </v-col>
+      <v-col cols="6" class="center"> 
         <div class="form">
+        <h3 class="text-center">Sistema Seguradora</h3>       
           <v-form class="py-5">
             <v-text-field
               required
@@ -21,12 +22,12 @@
               id="password"
               label="Senha"
               name="password"
-              type="e-mail"
+              type="password"
               v-model="password"
               @keyup.enter="doLogin"
             ></v-text-field>
 
-            <v-switch v-model="isAdmin" label="Admin ?"></v-switch>
+            <v-switch v-model="isAdmin" label="Admin"></v-switch>
             <!-- () => $router.push(isAdmin ? '/painel-adm' : '/painel-cliente') -->
             <!-- @click="doLogin" -->
 
@@ -45,48 +46,43 @@
 </template>
 
 <script>
-// import { authenticationService } from '@/_services';
-// import { router, Role } from '@/_helpers';
+import { getUsers } from "../services/api";
+
 export default {
   name: "Login",
   data: () => ({
+    // users:[],
     isAdmin: true,
     email: "",
     password: "",
   }),
+  async created() {
+    try {
+      let users = await getUsers();
+      this.users = users;
+      console.log("users", this.users);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   methods: {
-    async doLogin() {
-      const { email, password } = this;
-
-      try {
-        const res = await this.$firebase
-          .auth()
-          .signInWithEmailAndPassword(email, password);
-
-        window.uid = res.user.uid;
-        this.$router.push("/painel-adm");
-      } catch (e) {
-        alert("Usuário/Senha Inválidos!");
-      }
-      /**
-     *  if (this.user) {
-        if (this.user.type == "admin" {
-          this.$router.push('/painel-adm');
-        } else {
-          this.$router.push('/painel-cliente');
-        }
-      }
-      admin@seguro.com
-      admin123
-     */
+    async doLogin() {     
+      
+      // if (this.users) {
+      //   if (this.users.type == "admin") {
+      //     this.$router.push('/painel-adm');
+      //   } else {
+      //     this.$router.push('/painel-cliente');
+      //   }
+      // }
+       
+      // admin@gmail.com
+      // admin123
+      // cliente@gmail.com
+      // cliente123
+     
     },
-    // beforeRouteEnter(to, from, next){
-    //   next(vm => {
-    //     if (window.uid) {
-    //       vm.$router.push({name:'painel-adm'})
-    //     }
-    //   })
-    // }
+    
   },
 };
 </script>

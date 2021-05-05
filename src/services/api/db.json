@@ -3,12 +3,11 @@
         { "id": 1, "type": "admin", "email": "admin@gmail.com", "password": "123" },
         { "id": 2, 
           "type": "client", 
-          "imobName":"Castro Imoveis",
+          "name":"Castro Imoveis",
           "cnpj": "99999999", 
           "email": "cliente@gmail.com", 
           "telephone": "219999-9999", 
-           "password": "123",
-           "password_confirm":"123" 
+          "password": "123"          
         }
     ],
     "properties": [

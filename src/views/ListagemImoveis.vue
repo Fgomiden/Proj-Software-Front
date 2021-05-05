@@ -11,7 +11,11 @@
           large
           class="mx-4"
           @click="
-            () => $router.push({ name: 'cadastro-imovel', params: { cliente:{name:cliente.name,id:cliente.id} } })
+            () =>
+              $router.push({
+                name: 'cadastro-imovel',
+                params: { cliente: { name: cliente.name, id: cliente.id } },
+              })
           "
         >
           <v-icon left> mdi-home-plus </v-icon>
@@ -57,7 +61,12 @@
           sm="6"
           md="4"
         >
-          <v-card class="pa-2 elevation-2" outlined max-width="430" max-height="430" >
+          <v-card
+            class="pa-2 elevation-2"
+            outlined
+            max-width="430"
+            max-height="430"
+          >
             <v-col>
               <v-col class="pa-3">
                 <div>Imóvel: {{ imovel.street_name }}</div>
@@ -109,7 +118,7 @@ export default {
   },
   computed: {
     cliente() {
-      console.log('params do cliente nos imoveis', this.$route.params.cliente)
+      console.log("params do cliente nos imoveis", this.$route.params.cliente);
       return this.$route.params.cliente;
     },
   },
